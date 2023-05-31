@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../ChangeNameCard.dart';
 import '../drawer.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,11 +11,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TextEditingController _nameController = TextEditingController();
+  final _nameController = TextEditingController();
   var myText = "CHANGE IT";
+  var url = "https://jsonplaceholder.typicode.com/photos";
+  var data;
   @override
   void initState() {
     super.initState();
+    getdata();
+  }
+
+  getdata() async {
+    var res = await http.get(Uri.parse(url));
+    data = jsonDecode(res.body);
+    setState(() {});
   }
 
   @override
@@ -25,13 +35,23 @@ class _HomePageState extends State<HomePage> {
         title: const Text("Awesome App"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(25.0),
-        child: SingleChildScrollView(
-          child: Card(
-            child:
-                ChangeNameCard(myText: myText, nameController: _nameController),
-          ),
-        ),
+        padding: const EdgeInsets.all(16.0),
+        child: data != null
+            ? GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 1),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListTile(
+                        title: Text(data[index]["title"]),
+                        subtitle: Text("ID : ${data[index]["id"]}"),
+                        leading: Image.network(data[index]["url"])),
+                  );
+                },
+                itemCount: data.length,
+              )
+            : Center(child: CircularProgressIndicator()),
       ),
       drawer: drawer(),
       floatingActionButton: FloatingActionButton(
