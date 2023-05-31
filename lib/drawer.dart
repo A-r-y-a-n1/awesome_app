@@ -1,3 +1,4 @@
+import 'package:awesome_app/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 class drawer extends StatelessWidget {
@@ -6,7 +7,7 @@ class drawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         padding: const EdgeInsets.all(10.0),
-        children: const <Widget>[
+        children: <Widget>[
           UserAccountsDrawerHeader(
             accountName: Text("Aryan Rohela"),
             accountEmail: Text("rohelaaryan@gmail.com"),
@@ -28,7 +29,12 @@ class drawer extends StatelessWidget {
             subtitle: Text("rohelaaryan@gmail.com"),
             trailing: Icon(Icons.edit),
             tileColor: Colors.white70,
-          )
+          ),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("Signout"))
         ],
       ),
     );

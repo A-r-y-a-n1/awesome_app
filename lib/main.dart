@@ -1,4 +1,4 @@
-import 'package:awesome_app/pages/home_page.dart';
+import 'package:awesome_app/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -7,7 +7,7 @@ void main() {
         themeAnimationDuration: const Duration(seconds: 15),
         themeAnimationCurve: Curves.bounceIn,
         title: "Awesome App",
-        home: const HomePage(),
+        home: LoginPage(),
         theme: ThemeData(primarySwatch: Colors.purple)),
   );
 }

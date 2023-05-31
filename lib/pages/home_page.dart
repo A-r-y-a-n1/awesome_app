@@ -35,14 +35,14 @@ class _HomePageState extends State<HomePage> {
         title: const Text("Awesome App"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         child: data != null
             ? GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 1),
+                    crossAxisCount: 4),
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(4.0),
                     child: ListTile(
                         title: Text(data[index]["title"]),
                         subtitle: Text("ID : ${data[index]["id"]}"),
