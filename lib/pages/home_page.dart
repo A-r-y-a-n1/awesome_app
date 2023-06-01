@@ -1,3 +1,4 @@
+import 'package:awesome_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import '../drawer.dart';
 import 'package:http/http.dart' as http;
@@ -33,6 +34,14 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: const Text("Awesome App"),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.logout_sharp),
+              onPressed: () {
+                Constants.pref.setBool("LoggedIn", false);
+                Navigator.pop(context);
+              })
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

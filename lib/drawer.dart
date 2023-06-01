@@ -29,11 +29,6 @@ class drawer extends StatelessWidget {
             trailing: Icon(Icons.edit),
             tileColor: Colors.white70,
           ),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text("Signout"))
         ],
       ),
     );

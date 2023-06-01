@@ -1,3 +1,4 @@
+import 'package:awesome_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'home_page.dart';
@@ -54,6 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             ElevatedButton(
                               onPressed: () {
+                                Constants.pref.setBool("LoggedIn", true);
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
