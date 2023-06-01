@@ -1,4 +1,3 @@
-import 'package:awesome_app/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 class drawer extends StatelessWidget {
